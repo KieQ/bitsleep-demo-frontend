@@ -32,7 +32,7 @@ export default {
         method:"POST",
         body: JSON.stringify(request),
       })
-      let resp = result.json();
+      let resp = await result.json();
       if(resp.status_code !== 0){
         console.log(resp.status_message);
         return
