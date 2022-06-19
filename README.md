@@ -1,4 +1,4 @@
-# bitsleep_frontend
+# bitsleep
 
 ## Project setup
 ```
