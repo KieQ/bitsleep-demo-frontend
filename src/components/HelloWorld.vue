@@ -7,6 +7,9 @@
     <input type="text" v-model="greet_text"/>
     <button @click="greet">Greet</button>
   </div>
+  <div>
+    <img v-if="show_loading" width="50" src="../assets/giphy.gif" alt="loading"/>
+    </div>
 </template>
 
 <script>
@@ -14,7 +17,8 @@ export default {
   name: 'HelloWorld',
   data(){
     return {
-      greet_text:""
+      greet_text:"",
+      show_loading: false,
     }
   },
 
@@ -27,7 +31,7 @@ export default {
               {"type":"text", "value": this.greet_text},
           ]
       }
-
+      this.show_loading = true;
       let result = await fetch("/api/image/generate", {
         method:"POST",
         body: JSON.stringify(request),
@@ -40,6 +44,8 @@ export default {
       document.getElementById('meow').src = resp.data.url;
       }catch(e){
         console.log(e);
+      }finally{
+        this.show_loading=false;
       }
     }
   }
