@@ -30,7 +30,7 @@ export default {
 
       let result = await fetch("/api/image/generate", {
         method:"POST",
-        body: request,
+        body: JSON.stringify(request),
       })
       let resp = result.json();
       if(resp.status_code !== 0){
